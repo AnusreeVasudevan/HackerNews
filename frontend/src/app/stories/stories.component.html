@@ -3,7 +3,7 @@
     type="text"
     placeholder="Search by title or author"
     [value]="search()"
-    (input)="onSearch(($event.target as HTMLInputElement).value)"
+    (input)="onSearch($event)"
   />
 
   <ul *ngIf="stories().length > 0; else noResults">
