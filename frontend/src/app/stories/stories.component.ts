@@ -35,7 +35,8 @@ export class StoriesComponent {
     });
   }
 
-  onSearch(value: string) {
+  onSearch(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
     this.search.set(value);
     this.page.set(1);
   }
