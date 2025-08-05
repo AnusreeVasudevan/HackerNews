@@ -1,0 +1,19 @@
+<div class="stories">
+  <input
+    type="text"
+    placeholder="Search by title or author"
+    [value]="search()"
+    (input)="onSearch(($event.target as HTMLInputElement).value)"
+  />
+  <ul>
+    <li *ngFor="let story of stories()">
+      <a [href]="story.url" target="_blank">{{ story.title }}</a>
+      <span class="author">by {{ story.by }}</span>
+    </li>
+  </ul>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page() === 1">Previous</button>
+    <span>Page {{ page() }}</span>
+    <button (click)="nextPage()" [disabled]="page() * pageSize >= total()">Next</button>
+  </div>
+</div>
