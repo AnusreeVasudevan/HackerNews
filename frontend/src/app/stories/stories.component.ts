@@ -35,6 +35,11 @@ export class StoriesComponent {
     });
   }
 
+  onSearch(value: string) {
+    this.search.set(value);
+    this.page.set(1);
+  }
+
   nextPage() {
     if (this.page() * this.pageSize < this.total()) {
       this.page.update(p => p + 1);
@@ -45,10 +50,5 @@ export class StoriesComponent {
     if (this.page() > 1) {
       this.page.update(p => p - 1);
     }
-  }
-
-  onSearch(value: string) {
-    this.search.set(value);
-    this.page.set(1);
   }
 }

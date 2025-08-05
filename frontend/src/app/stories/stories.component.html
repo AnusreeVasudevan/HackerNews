@@ -5,12 +5,18 @@
     [value]="search()"
     (input)="onSearch(($event.target as HTMLInputElement).value)"
   />
-  <ul>
+
+  <ul *ngIf="stories().length > 0; else noResults">
     <li *ngFor="let story of stories()">
       <a [href]="story.url" target="_blank">{{ story.title }}</a>
       <span class="author">by {{ story.by }}</span>
     </li>
   </ul>
+
+  <ng-template #noResults>
+    <p>No stories found.</p>
+  </ng-template>
+
   <div class="pagination">
     <button (click)="prevPage()" [disabled]="page() === 1">Previous</button>
     <span>Page {{ page() }}</span>
